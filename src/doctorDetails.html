@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Patient Info</title>
+  <title>Doctor Info</title>
   <meta name="description" content="">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,13 +23,13 @@
 <body>
   <div class="jumbotron jumbotron-fluid" style="height: 8.25rem">
     <div class="container">
-      <h1 class="display-4 d-flex  justify-content-center">Patient Information</h1>
+      <h1 class="display-4 d-flex  justify-content-center">Doctor Information</h1>
       
     </div>
   </div>
                 <div class="container ">
                     <div class="">
-                        <h2>Patient Information <button class="btn btn-primary" 
+                        <h2>Doctor Information <button class="btn btn-primary" 
                             style="border-radius: 7px;" onclick="registeredPatient()">       
                             Click here
                         </button> </h2>
@@ -38,17 +38,17 @@
 
                    
                         
-                    <div class="card " id="A" onclick="fnChangeBorder('A')" style="width:50rem;display: none" >
+                    <div class="card " id="A" onclick="fnChangeBorder('A')" style="width:50rem;display: none;" >
                            
                                     <div class="">
                                             <div class="col-md-6 mb-3">
-                                                    <label for="validationCustomUsername">Patient ID</label>
+                                                    <label for="validationCustomUsername">Doctor ID</label>
                                                     <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         
                                                     </div>
                                                     <h2 id="#"></h2>
-                                                    <input  type="number" class="form-control" id="P_getpid" placeholder="Patient ID" aria-describedby="inputGroupPrepend" required>
+                                                    <input  type="number" class="form-control" id="D_getdid" placeholder="Doctor ID" aria-describedby="inputGroupPrepend" required>
                                                     <div class="invalid-feedback">
                                                         Please input a ID.
                                                     </div>
@@ -56,111 +56,109 @@
                                                 </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">First name</label>
-                                        <h4 id="P_getfname"></h4>
-                                       
+                                        <h4 id="D_getfname"></h4>
+                                        
                                         <div class="valid-feedback">
                                         Looks good!
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom02">Last name</label>
-                                        
-                                        <h4 id="P_getlname"></h4>
+                                       
+                                        <h4 id="D_getlname"></h4>
                                         <div class="valid-feedback">
                                         Looks good!
                                         </div>
                                     </div>
-                                    </div>
-                                    <div class="">
                                     <div class="col-md-6 mb-3">
-                                        <label for="validationCustom03">Age</label>
-                                        <h4 id="P_getage"></h4>
-                                        <div class="invalid-feedback">
-                                        Please provide a valid Age.
+                                        <label for="validationCustom02">Patient ID</label>
+                                        <h4 id="D_getpid"></h4>
+                                        <div class="valid-feedback">
+                                        Looks good!
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="validationCustom04">DOB  <small> (YYYY-MM-DD)</small></label>
-                                        <h4 id="P_getdob"></h4>  
-                                        <div class="invalid-feedback">
-                                        Please provide a valid DOB.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                            <label for="validationCustom02">Doctor ID</label>
-                                            
-                                            <h4 id="P_getdid"></h4>
-                                          
-                                            <div class="valid-feedback">
-                                            Looks good!
-                                            </div>
-                                        </div>
-                                   
-                                    </div>
+                                    </div>        
                                     <div class="form-group ml-4">
-                                    
+                                  
                                     <br>
-                                    <button class="btn btn-primary ml-5" type="submit" style="border-radius: 7px;" id="P_get">Submit Details</button> 
+                                    <button class="btn btn-primary ml-5" type="submit" style="border-radius: 7px;" id="D_get">Submit Details</button> 
                                     </div>
-                               
-
-                                
-                                
-                               
+                              
                             </div>
 
                             <br>
 
                             <div class="">
-                                    <h2>Request Doctor to be assigned <button class="btn btn-primary" 
+                                    <h2>View your patient details <button class="btn btn-primary" 
                                         style="border-radius: 7px;" onclick="consentDoctor()">       
                                         Click here
                                     </button> </h2>
                                    
                                 </div>
-                                <div class="card " id="B" onclick="fnChangeBorder('B')" style="width:50rem;display: none" >
+                                <div class="card " id="B" onclick="fnChangeBorder('B')" style="width:50rem;display: none;" >
                                                 <div class="">
                                                         <div class="col-md-6 mb-3">
-                                                                <label for="validationCustomUsername">Patient ID</label>
+                                                                <label for="validationCustomUsername">Doctor ID</label>
                                                                 <div class="input-group">
                                                                 <div class="input-group-prepend">
-                                                                    
+                                                                   
                                                                 </div>
-                                                                <h2 id="#"></h2>
-                                                                <input  type="number" class="form-control" id="P_reqpid" placeholder="Patient ID" aria-describedby="inputGroupPrepend" required>
+                                                                <input  type="number" class="form-control" id="D_Pdid" placeholder="Doctor ID" aria-describedby="inputGroupPrepend" required>
                                                                 <div class="invalid-feedback">
                                                                     Please input a ID.
                                                                 </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                    <label for="validationCustomUsername">Patient ID</label>
+                                                                    <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                    </div>
+                                                                    <h2 id="#"></h2>
+                                                                    <input  type="number" class="form-control" id="D_Ppid" placeholder="Patient ID" aria-describedby="inputGroupPrepend" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please input a ID.
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-3">
+                                                                    <label for="validationCustom02">First name</label>
+                                                                    <h4 id="D_Pfname"></h4>
+                                                                    <div class="valid-feedback">
+                                                                    Looks good!
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-3">
+                                                                        <label for="validationCustom02">Last name</label>
+                                                                        <h4 id="D_Plname"></h4>
+                                                                        <div class="valid-feedback">
+                                                                        Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="">
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="validationCustom03">Age</label>
+                                                                        <h4 id="D_Page"></h4>
+                                                                        <div class="invalid-feedback">
+                                                                        Please provide a valid Age.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="validationCustom04">DOB <small> (YYYY-MM-DD)</small></label>
+                                                                        <h4 id="D_Pdob"></h4>  
+                                                                        <div class="invalid-feedback">
+                                                                        Please provide a valid DOB.
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
                                                 <div class="form-group ml-4"> 
                                                 <br>
                                                 <button data-toggle="modal" data-target="#exampleModalCenter" 
                                                 class="btn btn-primary ml-5" type="submit" 
-                                                style="border-radius: 7px;" id="P_req">Request</button> 
+                                                style="border-radius: 7px;" id="D_getpatient">Request</button> 
 
-                                               
-                                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                          <div class="modal-content">
-                                                            <div class="modal-header">
-                                                              <h5 class="modal-title" id="exampleModalLongTitle">Information!</h5>
-                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                              </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                             <strong>Your request has been sent to the hospital </strong> 
-                                                             
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                
-                                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                              
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
+                                                <!-- Modal -->
                                                 </div>
                                         </div>
                             
@@ -168,13 +166,13 @@
                                 function fnChangeBorder(boxId)
 
                                 {document.getElementById(boxId).style.border = "solid #00AEEF";}
-                             
+                              
                               (function() {
                                 'use strict';
                                 window.addEventListener('load', function() {
                                   
                                   var forms = document.getElementsByClassName('needs-validation');
-                                  
+                                 
                                   var validation = Array.prototype.filter.call(forms, function(form) {
                                     form.addEventListener('submit', function(event) {
                                       if (form.checkValidity() === false) {
@@ -225,7 +223,6 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/web3.min.js"></script>
 <script src="js/truffle-contract.js"></script>
-<script src="js/app.js" async></script>
 
  
   <script>
@@ -247,6 +244,13 @@ $('.form-floating-label input, .form-floating-label textarea').blur(function(){
   <script src="https://www.google-analytics.com/analytics.js" async></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+  <script src="js/app.js" async></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 

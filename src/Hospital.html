@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hospital details</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+ 
+  <!-- Place favicon.ico in the root directory -->
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="theme-color" content="#fafafa">
+</head>
+<style>
+</style>
+<body>
+        
+ 
+  <div class="jumbotron jumbotron-fluid " style="height: 8.25rem">
+    <div class="container">
+      <h1 class="display-4 d-flex  justify-content-center">Hospital details</h1>
+    </div>  
+  </div>
+  
+
+          
+          <div class="container ">
+
+<!-- LIST OF REGISTERED DOCTOR -->
+              <div  >
+                  <h2>List of registered doctor
+                      <button class="btn btn-primary" 
+                            style="border-radius: 7px;" onclick="registeredDoctor()" id="H_Dlist">       
+                            Click here
+                        </button>
+                    </h2>
+                        <div class="card "  style="width:50rem;display: none;" id="registeredDoctor">
+                            <h4 id="H_dlist"></h4>
+                        </div>
+            </div>
+
+<!-- LIST OF PATIENT REQUESTING DOCTOR -->
+
+            <div  >
+                <h2>List of patient requesting doctor
+                    <button class="btn btn-primary"  style="border-radius: 7px;"
+                    onclick="registeredPatient()"
+                     id="H_Plist"> Click here</button>
+                 </h2>
+                <div class="card "  style="width:50rem;display: none;" id="registeredPatient" >
+                 <h4 id="H_plist"></h4>
+        </div>
+            </div>
+
+
+
+
+                <div class=""><h2>Patient Assignment to doctor <button class="btn btn-primary" style="border-radius: 7px;"
+                    onclick="assign()"> Click here</button></h2></div>
+                <div class="card " id="assign" onclick="fnChangeBorder('assign')" style="width:50rem;">
+                                <div class="">
+                                        <div class="col-md-6 mb-3">
+                                                <label for="validationCustomUsername">Doctor ID</label>
+                                                <div class="input-group">
+                                                <div class="input-group-prepend"> 
+                                                </div>
+                                                <input type="number" class="form-control" id="H_assign_did" placeholder="Doctor ID" aria-describedby="inputGroupPrepend" required>
+                                                <div class="invalid-feedback">
+                                                    Please input a ID.
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                    <label for="validationCustomUsername">Patient ID</label>
+                                                    <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                    </div>
+                                                    <input type="number" class="form-control" id="H_assign_pid" placeholder="Patient ID" aria-describedby="inputGroupPrepend" required>
+                                                    <div class="invalid-feedback">
+                                                        Please input a ID.
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                </div>
+                                <div class="">
+                                </div>
+                                <div class="form-group ml-4">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label" for="invalidCheck">
+                                    Agree to terms and conditions
+                                    </label>
+                                    <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                    </div>
+                                </div>
+                                <br>
+                                <button data-toggle="modal" data-target="#exampleModalCenter" 
+                                class="btn btn-primary ml-5" type="submit" 
+                                style="border-radius: 7px;" id="H_assign">Assign</button> 
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Information!</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            The patient is assigned to the doctor
+                                             
+                                            </div>
+                                            <div class="modal-footer">
+                                                
+                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                              <!-- <button type="button" class="btn btn-primary"></button> -->
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                        </div>
+
+                        <script>
+                            function consentDoctor() {
+                            var x = document.getElementById("B");
+                            x.style.display == "none"
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                            }
+                            </script>
+                        <script>
+                                function registeredDoctor() {
+                                var x = document.getElementById("registeredDoctor");
+                                x.style.display == "none"
+                                if (x.style.display == "none") {
+                                    x.style.display = "block";
+                                } else {
+                                    x.style.display = "none";
+                                }
+                                }
+                                </script>
+                                 <script>
+                                        function registeredPatient() {
+                                        var x = document.getElementById("registeredPatient");
+                                        x.style.display == "none"
+                                        if (x.style.display == "none") {
+                                            x.style.display = "block";
+                                        } else {
+                                            x.style.display = "none";
+                                        }
+                                        }
+                                        </script>
+                            <script>
+                                    function assign() {
+                                    var x = document.getElementById("assign");
+                                    x.style.display == "none"
+                                    if (x.style.display == "none") {
+                                        x.style.display = "block";
+                                    } else {
+                                        x.style.display = "none";
+                                    }
+                                    }
+                                    </script>
+                          <script>
+                            function fnChangeBorder(boxId)
+
+                            {document.getElementById(boxId).style.border = "solid #00AEEF";}
+                          // Example starter JavaScript for disabling form submissions if there are invalid fields
+                          (function() {
+                            'use strict';
+                            window.addEventListener('load', function() {
+                              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                              var forms = document.getElementsByClassName('needs-validation');
+                              // Loop over them and prevent submission
+                              var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                  if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                  }
+                                  form.classList.add('was-validated');
+                                }, false);
+                              });
+                            }, false);
+                          })();
+                          </script>
+        
+<br>
+               </div>
+  
+  
+  <script src="js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/app.js" async></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+  $('.form-floating-label input, .form-floating-label textarea').focusin(function(){
+  $(this).parent().addClass('has-value');
+});
+
+$('.form-floating-label input, .form-floating-label textarea').blur(function(){
+  if(!$(this).val().length > 0) {
+    $(this).parent().removeClass('has-value');
+  }
+});
+
+</script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

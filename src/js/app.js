@@ -453,8 +453,8 @@ var HospitalContract = web3.eth.contract([
   }
 ]);
 
-var Patient = PatientContract.at('0xfa80D454049c57Cd334f1F79DaBA35c91d3589d3');
-var Hospital = HospitalContract.at('0x193eD9ed86E30C78Fd66Ed65cF6e784493Fc8e8A');
+var Patient = PatientContract.at('0x635F828C3dc238403F623c30fA7FF6E8007C7e4F');
+var Hospital = HospitalContract.at('0xb622e089D8F8B1C6C7FCcedf238384324b73d9A8');
 
 
 var patientEvent = Patient.PatientInfo();	
@@ -504,7 +504,12 @@ $("#P_get").click(function() {
 					  $("#P_getlname").html(result[1]);
 					  $("#P_getage").html(result[3].c);
 					  $("#P_getdob").html(result[2]);
-					  $("#P_getdid").html(result[4].c);
+					  if((result[4].c)==0)
+					  {
+						$("#P_getdid").html("No Doctor Assigned");
+					  }
+					  else
+						$("#P_getdid").html(result[4].c);
 					  console.log(result);
 				  }
 			  else
@@ -514,7 +519,7 @@ $("#P_get").click(function() {
 
 	  $("#P_req").click(function() {
 	$("#loader").show();
-	Patient.request_doc('0x193eD9ed86E30C78Fd66Ed65cF6e784493Fc8e8A',$("#P_reqpid").val());
+	Patient.request_doc('0xb622e089D8F8B1C6C7FCcedf238384324b73d9A8',$("#P_reqpid").val());
 });
 
 // .............DOCTOR...............
@@ -524,29 +529,37 @@ $("#P_get").click(function() {
 	DoctorEvent.watch(function(error, result){
 		  if (!error)
 			  {
-				$("#insTrans2").html('Block hash: ' + result.blockHash);
-				  $("#loader").hide();
+				$("#hash3").html('Block hash: ' + result.blockHash);
+				
 				  console.log(result);
-				  $("#patient").html("Name : " + (result.args.fName)+" "+ (result.args.lName) );
+			//	  $("#patient").html("Name : " + (result.args.fName)+" "+ (result.args.lName) );
 			  } else {
-				  $("#loader").hide();
+				
 				  console.log(" event error");
 			  }
 			});
 
-$("#button").click(function() {
-	Hospital.add_doctor($("#Did").val());
-	Hospital.setDoctor($("#Did").val(), $("#fname").val(),$("#lname").val());
+$("#D_submit").click(function() {
+	Hospital.add_doctor($("#D_did").val());
+	Hospital.setDoctor($("#D_did").val(), $("#D_fname").val(),$("#D_lname").val());
    
 });
 
 
-$("#button1").click(function() {
+$("#D_get").click(function() {
   
-Hospital.getDoctor($("#Did").val(),function(error, result){
+Hospital.getDoctor($("#D_getdid").val(),function(error, result){
   if(!error)
 			  {
-				  $("#patient").html(result[0]+' ' + result[1] +" "+result[2]);
+				  $("#D_getfname").html(result[0]);
+				  $("#D_getlname").html(result[1]);
+				  if((result[2].c)==0)
+				  {
+					$("#D_getpid").html("No patient assigned");
+				  }
+				  else
+				  $("#D_getpid").html(result[2].c);
+
 				  console.log(result);
 			  }
 		  else
@@ -554,14 +567,17 @@ Hospital.getDoctor($("#Did").val(),function(error, result){
 	  });     
   });
   
-  $("#button8").click(function() {
+  $("#D_getpatient").click(function() {
   
-  Hospital.view_patient('0xfa80D454049c57Cd334f1F79DaBA35c91d3589d3',$("#D_Did").val(),$("#D_Pid").val(),function(error, result){
+  Hospital.view_patient('0x635F828C3dc238403F623c30fA7FF6E8007C7e4F',$("#D_Pdid").val(),$("#D_Ppid").val(),function(error, result){
   if(!error)
 				{
-					$("#patient").html(result[0]+' ' + result[1] +" "+result[2] +" "+result[3] +" "+result[4]);
+					$("#D_Pfname").html(result[0]);
+					$("#D_Plname").html(result[1]);
+					$("#D_Page").html(result[3].c);
+					$("#D_Pdob").html(result[2]);
 					console.log(result);
-					if(result[4]==0)
+					if(result[4]==0)	
 					{
 					  alert("This Patient is not assigned to you");
 					}
@@ -573,12 +589,12 @@ Hospital.getDoctor($("#Did").val(),function(error, result){
 
 //........Hospital..........
 
-  $("#button2").click(function() {
+  $("#H_Dlist").click(function() {
 	Hospital.get_did(function(error,result){
 	  if(!error)
 	  {
 		result.forEach(function(ele){
-		  document.getElementById("patient2").innerHTML+=(ele.c)+"<br>";
+		  document.getElementById("H_dlist").innerHTML+=(ele.c)+"<br>";
 		  console.log(ele.c);
 		});
 		
@@ -589,12 +605,12 @@ Hospital.getDoctor($("#Did").val(),function(error, result){
   });
 
 
-  $("#button3").click(function() {
+  $("#H_Plist").click(function() {
 	Hospital.request_list(function(error,result){
 	  if(!error)
 	  {
 		result.forEach(function(ele){
-		  document.getElementById("patient5").innerHTML+=(ele.c)+"<br>";
+		  document.getElementById("H_plist").innerHTML+=(ele.c)+"<br>";
 		  console.log(ele.c);
 		});
 		
@@ -603,11 +619,11 @@ Hospital.getDoctor($("#Did").val(),function(error, result){
 			  console.error(" Get error");
 	});
   });
-
-  $("#button7").click(function() {
-	$("#loader").show();
-  Hospital.setPid_and_Did('0xfa80D454049c57Cd334f1F79DaBA35c91d3589d3',$("#assign_Pid").val(),$("#assign_Did").val());
-  Hospital.remove_Pid($("#assign_Pid").val());
+ 
+  $("#H_assign").click(function() {
+	
+  Hospital.setPid_and_Did('0x635F828C3dc238403F623c30fA7FF6E8007C7e4F',$("#H_assign_pid").val(),$("#H_assign_did").val());
+  Hospital.remove_Pid($("#H_assign_pid").val());
 });
 
  
