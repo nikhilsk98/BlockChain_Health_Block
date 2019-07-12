@@ -5,6 +5,9 @@
             string fName;
             string lName;
             uint Pid;
+            uint age;
+            string specialization;
+            string DOB;
         }
     
         mapping(uint => doctors) map;
@@ -12,26 +15,40 @@
         
        event DoctorInfo(
          string fName,
-         string lName
-         
+         string lName,
+         uint age
          );
          
-         function setDoctor(uint _Did,string memory _fName, string memory _lName /*,string memory _Pid*/) public {
+         event DoctorInfo1(
+             string DOB,
+             string specialization
+             );
+         
+         function setDoctor(uint _Did,string memory _fName, string memory _lName ,uint _age) public {
            map[_Did].fName = _fName;
            map[_Did].lName = _lName;
+           map[_Did].age=_age;
          
           
-          emit DoctorInfo(_fName,_lName/*,_Pid*/);
+          emit DoctorInfo(_fName,_lName,_age);
             }
             
-             function getDoctor(uint _Did) view public returns (string memory ,string memory , uint) {
-           return (map[_Did].fName, map[_Did].lName,map[_Did].Pid);
+            function setDoctor1(uint _Did,string memory _DOB, string memory _specialization) public {
+           map[_Did].DOB = _DOB;
+           map[_Did].specialization = _specialization;
+          
+          emit DoctorInfo1(_DOB,_specialization);
+            }
+            
+             function getDoctor(uint _Did) view public returns (string memory ,string memory , uint,string memory,string memory,uint) {
+           return (map[_Did].fName, map[_Did].lName,map[_Did].age,map[_Did].DOB,map[_Did].specialization,map[_Did].Pid);
        }
+       
        
        function setPid(uint _Did, uint _Pid)public {
            map[_Did].Pid = _Pid;
        }
-
+       
        function view_patient(address _addrPatient,uint _Did,uint _Pid)public view  returns(string memory ,string memory ,string memory, uint, uint){
            Health A = Health(_addrPatient);
            return A.doctor_view(_Did,_Pid);
@@ -46,7 +63,7 @@
               doctors_list.push(_did);
           }
           
-           function get_did()public view  returns(uint[] memory){
+           function get_did()view public returns(uint[] memory){
               return doctors_list;
           }
           
@@ -54,7 +71,7 @@
               patients_list.push(_pid);
           }
           
-          function request_list()public view  returns(uint[] memory){
+          function request_list()view public returns(uint[] memory){
               return patients_list;
           }
           
@@ -62,10 +79,9 @@
               Health patient = Health(_addrPatient);
               Doctor.setPid(_Did,_Pid);
               patient.setDid(_Pid,_Did);
-              
           }
-
-           function remove_Pid(uint _Pid)public{
+          
+          function remove_Pid(uint _Pid)public{
               for(uint i=0;i<patients_list.length;i++){
              if(_Pid==patients_list[i])
              {
