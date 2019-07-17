@@ -513,8 +513,8 @@ var HospitalContract = web3.eth.contract([
 	}
 ]);
 
-var Patient = PatientContract.at('0xF2A2576Df4Aa0f48A723986D0E212d638500fE2b');
-var Hospital = HospitalContract.at('0x370b80e661a3077628D62E9E9795a0DA5c7d0C25');
+var Patient = PatientContract.at('0x50d2a69f094373e6D1693EB6786046A5877cD967');
+var Hospital = HospitalContract.at('0xE1555d6820D178D089FABcCD94D9D6E8ac1829BD');
 
 
 var patientEvent = Patient.PatientInfo();	
@@ -579,7 +579,7 @@ $("#P_get").click(function() {
 
 	  $("#P_req").click(function() {
 	$("#loader").show();
-	Patient.request_doc('0x370b80e661a3077628D62E9E9795a0DA5c7d0C25',$("#P_reqpid").val());
+	Patient.request_doc('0xE1555d6820D178D089FABcCD94D9D6E8ac1829BD',$("#P_reqpid").val());
 });
 
 // .............DOCTOR...............
@@ -647,7 +647,7 @@ Hospital.getDoctor($("#D_getdid").val(),function(error, result){
   
   $("#D_getpatient").click(function() {
   
-  Hospital.view_patient('0xF2A2576Df4Aa0f48A723986D0E212d638500fE2b',$("#D_Pdid").val(),$("#D_Ppid").val(),function(error, result){
+  Hospital.view_patient('0x50d2a69f094373e6D1693EB6786046A5877cD967',$("#D_Pdid").val(),$("#D_Ppid").val(),function(error, result){
   if(!error)
 				{
 					$("#D_Pfname").html(result[0]);
@@ -701,7 +701,7 @@ Hospital.getDoctor($("#D_getdid").val(),function(error, result){
  
   $("#H_assign").click(function() {
 	
-  Hospital.setPid_and_Did('0xF2A2576Df4Aa0f48A723986D0E212d638500fE2b',$("#H_assign_pid").val(),$("#H_assign_did").val());
+  Hospital.setPid_and_Did('0x50d2a69f094373e6D1693EB6786046A5877cD967',$("#H_assign_pid").val(),$("#H_assign_did").val());
   Hospital.remove_Pid($("#H_assign_pid").val());
 });
 
